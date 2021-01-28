@@ -1,5 +1,5 @@
 import "./App.css";
-import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
+import { BrowserRouter as Router, Link, Route, Switch } from "react-router-dom";
 import { useEffect, useState } from "react";
 import About from "./components/About";
 import Home from "./components/Home";
@@ -19,12 +19,16 @@ function App() {
 
   return (
     <Router>
-      <div className="App">
-        <h3 className="text-2xl">Hello wordl</h3>
-        {pokemon && <Home pokemon={pokemon.results} />}
+      <div className="p-14">
+        <div className="flex flex-col items-center">
+          <Link to="/">
+            <header className="text-4xl text-yellow-700">Pokemon Picker</header>
+          </Link>
+        </div>
       </div>
       <Switch>
         <Route path="/about/:slug" component={About}></Route>
+        <Route path="/">{pokemon && <Home pokemon={pokemon.results} />}</Route>
       </Switch>
     </Router>
   );
